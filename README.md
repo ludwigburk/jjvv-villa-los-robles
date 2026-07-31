@@ -13,3 +13,16 @@
 ## Edición visual
 
 En F01, presione **Editar textos**, haga sus cambios y luego use **Descargar HTML modificado**.
+
+
+## Rama `prueba`
+
+1. Abra el selector de rama que dice `main`.
+2. Escriba `prueba`.
+3. Presione **Create branch: prueba from main**.
+4. Trabaje y suba cambios con la rama `prueba` seleccionada.
+5. Cuando estén aprobados, abra **Pull requests**.
+6. Cree uno con `base: main` y `compare: prueba`.
+7. Presione **Merge pull request**.
+
+GitHub Pages seguirá publicando la rama `main`, por lo que los cambios de `prueba` no afectarán la página pública.

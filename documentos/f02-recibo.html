@@ -3,49 +3,80 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>F02 · Recibo oficial compacto</title>
+<title>F02 · Recibo oficial</title>
 <link rel="stylesheet" href="../css/styles.css">
 <style>
-:root{--rg:#0b4f2a;--rs:#f7faf4}
-.receipt-wrap{display:flex;justify-content:center;padding:12px}
-.receipt-card{
-  width:139.7mm;height:107.95mm;background:#fff;border:1.4mm solid var(--rg);
-  border-radius:5mm;padding:4.5mm 5mm 4mm;color:#111;box-shadow:0 8px 24px rgba(0,0,0,.12);
+:root{--rg:#0b4f2a;--rs:#f7faf4;--line:#34473a}
+.print-controls{
+  display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap;
+  margin-bottom:12px
+}
+.print-controls .btn.active{background:#083c22}
+.sheet-preview{
+  width:215.9mm; min-height:279.4mm; margin:auto; padding:0;
+  display:grid; grid-template-columns:107.95mm 107.95mm;
+  grid-template-rows:139.7mm 139.7mm;
+  background:#fff; box-shadow:0 8px 28px rgba(0,0,0,.14);
   overflow:hidden
 }
-.receipt-head{display:grid;grid-template-columns:27mm 1fr 31mm;gap:4mm;align-items:start}
-.receipt-logo{width:25mm;height:25mm;object-fit:contain}
-.receipt-heading h1{margin:1mm 0 0;color:var(--rg);font-size:10mm;line-height:.95}
-.receipt-heading h2{margin:2mm 0 0;color:var(--rg);font-size:4.3mm}
-.folio-box{border:.5mm solid var(--rg);border-radius:4mm;padding:2.5mm 2mm;text-align:center;min-height:24mm}
-.folio-box b{display:block;color:var(--rg);font-size:4.2mm}
-.folio-line{margin-top:5mm;font-size:5mm;letter-spacing:1mm}
-.receipt-fields{margin-top:3mm}
-.field{display:grid;grid-template-columns:auto 1fr;gap:2mm;align-items:end;margin:1.55mm 0;font-size:3.8mm}
+.receipt-slot{
+  width:107.95mm;height:139.7mm;display:flex;align-items:stretch;justify-content:stretch;
+  border:.2mm dashed #aeb8ae;overflow:hidden
+}
+.receipt-card{
+  width:107.95mm;height:139.7mm;background:#fff;border:1.1mm solid var(--rg);
+  border-radius:3mm;padding:3.6mm;color:#111;overflow:hidden
+}
+.receipt-head{display:grid;grid-template-columns:20mm 1fr 24mm;gap:2.5mm;align-items:start}
+.receipt-logo{width:18mm;height:18mm;object-fit:contain}
+.receipt-heading h1{margin:.4mm 0 0;color:var(--rg);font-size:6.5mm;line-height:.92}
+.receipt-heading h2{margin:1.2mm 0 0;color:var(--rg);font-size:2.9mm;line-height:1.08}
+.folio-box{border:.35mm solid var(--rg);border-radius:2.5mm;padding:1.6mm 1.2mm;text-align:center;min-height:18mm}
+.folio-box b{display:block;color:var(--rg);font-size:2.9mm}
+.folio-line{margin-top:3.6mm;font-size:3.6mm;letter-spacing:.6mm}
+.receipt-fields{margin-top:2.4mm}
+.field{display:grid;grid-template-columns:auto 1fr;gap:1.3mm;align-items:end;margin:1.35mm 0;font-size:2.9mm}
 .field.amount{grid-template-columns:auto auto 1fr}
-.field .line{min-height:4.5mm;border-bottom:.35mm solid #34473a}
-.divider{border-top:.45mm solid var(--rg);margin:2mm 0 1.5mm}
-.payment-row{display:grid;grid-template-columns:auto auto auto 1fr;gap:3mm;align-items:center;margin:1.4mm 0;font-size:3.8mm}
-.check{display:inline-flex;align-items:center;gap:1.2mm;white-space:nowrap}
-.square{width:4mm;height:4mm;border:.35mm solid #34473a;display:inline-block}
-.receipt-bottom{display:grid;grid-template-columns:1.05fr 1fr;gap:5mm;align-items:end;margin-top:2mm}
-.thanks{border:.4mm solid var(--rg);border-radius:4mm;background:var(--rs);padding:3mm 4mm;min-height:22mm}
-.thanks strong{display:block;color:var(--rg);font-size:4.5mm;margin-bottom:1mm}
-.thanks span{font-size:3.5mm}
-.received-by{font-size:3.5mm}
-.received-by .field{margin:1.1mm 0;font-size:3.5mm}
-.signature-label{text-align:center;font-size:3.7mm;margin-top:1.5mm}
-.screen-note{max-width:139.7mm;margin:0 auto 10px;font-size:13px;color:#566159;text-align:center}
-@page{size:139.7mm 107.95mm;margin:0}
+.field .line{min-height:3.7mm;border-bottom:.25mm solid var(--line)}
+.divider{border-top:.3mm solid var(--rg);margin:1.7mm 0 1.2mm}
+.payment-title{font-size:2.9mm;margin-bottom:1.1mm}
+.payment-options{display:grid;grid-template-columns:1fr 1.3fr;gap:1mm 1.6mm;font-size:2.8mm}
+.check{display:flex;align-items:center;gap:.8mm}
+.square{width:3.1mm;height:3.1mm;border:.25mm solid var(--line);display:inline-block;flex:0 0 auto}
+.other-row{display:grid;grid-template-columns:auto 1fr;gap:1.2mm;align-items:end;margin-top:1mm;font-size:2.8mm}
+.receipt-bottom{display:grid;grid-template-columns:1fr;gap:1.5mm;margin-top:1.6mm}
+.thanks{border:.3mm solid var(--rg);border-radius:2.5mm;background:var(--rs);padding:2mm 2.5mm}
+.thanks strong{display:block;color:var(--rg);font-size:3.3mm;margin-bottom:.5mm}
+.thanks span{font-size:2.5mm}
+.received-by{border-top:.3mm solid var(--rg);padding-top:1.5mm;font-size:2.6mm}
+.received-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6mm}
+.signature-label{text-align:center;font-size:2.9mm;margin-top:1mm}
+.screen-note{max-width:215.9mm;margin:0 auto 10px;font-size:13px;color:#566159;text-align:center}
+.mode-1 .receipt-slot:nth-child(n+2){display:none}
+.mode-2 .receipt-slot:nth-child(n+3){display:none}
+.mode-1{grid-template-columns:107.95mm;grid-template-rows:139.7mm;width:107.95mm;min-height:139.7mm}
+.mode-2{grid-template-columns:107.95mm 107.95mm;grid-template-rows:139.7mm;width:215.9mm;min-height:139.7mm}
+@page{size:letter portrait;margin:0}
 @media print{
-  html,body{width:139.7mm!important;height:107.95mm!important;margin:0!important;padding:0!important;background:#fff!important;overflow:hidden!important}
-  .site-header,.doc-toolbar,.screen-note{display:none!important}
+  html,body{width:215.9mm!important;height:279.4mm!important;margin:0!important;padding:0!important;background:#fff!important}
+  .site-header,.doc-toolbar,.screen-note,.print-controls{display:none!important}
   .page-shell{max-width:none!important;margin:0!important;padding:0!important}
-  .receipt-wrap{padding:0!important}
-  .receipt-card{width:139.7mm!important;height:107.95mm!important;margin:0!important;box-shadow:none!important}
+  .sheet-preview{
+    width:215.9mm!important;min-height:279.4mm!important;margin:0!important;
+    box-shadow:none!important;display:grid!important;grid-template-columns:107.95mm 107.95mm!important;
+    grid-template-rows:139.7mm 139.7mm!important
+  }
+  .receipt-slot{display:flex!important}
+  .mode-1 .receipt-slot:nth-child(n+2),
+  .mode-2 .receipt-slot:nth-child(n+3){visibility:hidden!important;display:flex!important}
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
 }
-@media screen and (max-width:700px){.receipt-wrap{overflow:auto;justify-content:flex-start}}
+@media screen and (max-width:900px){
+  .sheet-preview{transform:scale(.72);transform-origin:top left;margin-bottom:-78mm}
+}
+@media screen and (max-width:650px){
+  .sheet-preview{transform:scale(.47);margin-bottom:-148mm}
+}
 </style>
 </head>
 <body>
@@ -71,9 +102,22 @@
     <button class="btn" id="download-html">Descargar HTML modificado</button>
   </div>
 
-  <p class="screen-note">Formato compacto: un cuarto de carta, orientación horizontal. Folio manual.</p>
+  <div class="print-controls">
+    <span>Recibos por hoja:</span>
+    <button class="btn" data-mode="1">1</button>
+    <button class="btn" data-mode="2">2</button>
+    <button class="btn active" data-mode="4">4</button>
+  </div>
 
-  <div class="receipt-wrap">
+  <p class="screen-note">
+    Hoja Carta con cuatro recibos de un cuarto de carta. Al imprimir, desactive “Encabezados y pies de página”.
+  </p>
+
+  <div class="sheet-preview mode-4" id="receipt-sheet"></div>
+</div>
+
+<template id="receipt-template">
+  <div class="receipt-slot">
     <main class="receipt-card">
       <header class="receipt-head">
         <img class="receipt-logo" src="../assets/logo-villa-los-robles.jpg" alt="Logo oficial">
@@ -96,14 +140,14 @@
 
         <div class="divider"></div>
 
-        <div class="payment-row">
-          <span>Medio de pago:</span>
+        <div class="payment-title">Medio de pago:</div>
+        <div class="payment-options">
           <span class="check"><span class="square"></span> Efectivo</span>
           <span class="check"><span class="square"></span> Transferencia</span>
-          <span class="check"><span class="square"></span> Otro: <span class="line" style="min-width:36mm"></span></span>
         </div>
+        <div class="other-row"><span><span class="square"></span> Otro:</span><span class="line"></span></div>
 
-        <div class="field"><span>N.º de comprobante / transferencia:</span><span class="line"></span></div>
+        <div class="field"><span>N.º comprobante / transferencia:</span><span class="line"></span></div>
         <div class="field"><span>Banco / institución:</span><span class="line"></span></div>
         <div class="field"><span>Observaciones:</span><span class="line"></span></div>
       </section>
@@ -113,18 +157,34 @@
           <strong data-editable>¡Gracias por tu aporte! ♥</strong>
           <span data-editable>Cuidemos nuestra sede, es de todos.</span>
         </div>
-
         <div class="received-by">
           <div style="margin-bottom:1mm">Recibido por:</div>
-          <div class="field"><span>Nombre:</span><span class="line"></span></div>
-          <div class="field"><span>Cargo:</span><span class="line"></span></div>
-          <div class="signature-label">FIRMA</div>
+          <div class="received-grid">
+            <div>
+              <div class="field"><span>Nombre:</span><span class="line"></span></div>
+              <div class="field"><span>Cargo:</span><span class="line"></span></div>
+            </div>
+            <div class="signature-label">FIRMA</div>
+          </div>
         </div>
       </section>
     </main>
   </div>
-</div>
+</template>
 
 <script src="../js/app.js"></script>
+<script>
+const sheet=document.getElementById('receipt-sheet');
+const template=document.getElementById('receipt-template');
+for(let i=0;i<4;i++) sheet.appendChild(template.content.cloneNode(true));
+
+document.querySelectorAll('[data-mode]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('[data-mode]').forEach(x=>x.classList.remove('active'));
+    btn.classList.add('active');
+    sheet.className='sheet-preview mode-'+btn.dataset.mode;
+  });
+});
+</script>
 </body>
 </html>

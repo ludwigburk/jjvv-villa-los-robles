@@ -23,3 +23,12 @@ if(downloadBtn){
     URL.revokeObjectURL(a.href);
   });
 }
+
+let _originalTitle=document.title;
+window.addEventListener('beforeprint',()=>{
+  _originalTitle=document.title;
+  document.title='';
+});
+window.addEventListener('afterprint',()=>{
+  document.title=_originalTitle;
+});

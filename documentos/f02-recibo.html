@@ -3,44 +3,52 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>F02 · Recibo oficial</title>
+<title>F02 · Recibo oficial compacto</title>
 <link rel="stylesheet" href="../css/styles.css">
 <style>
-.receipt-document{min-height:auto}
-.receipt-header{display:grid;grid-template-columns:26mm 1fr 39mm;gap:4mm;align-items:center;border-bottom:1px solid var(--line);padding-bottom:3mm}
-.receipt-title{margin:0;color:var(--green-900);font-size:29px;line-height:1}
-.receipt-subtitle{font-size:15px;font-weight:700;margin-top:4px}
-.receipt-slogan{font:italic 15px Georgia,serif;color:var(--green-700);margin-top:5px}
-.receipt-number{border:1px solid var(--line);border-radius:8px;overflow:hidden;text-align:center}
-.receipt-number strong{display:block;background:var(--green-900);color:#fff;padding:5px;font-size:10px}
-.receipt-number div{padding:9px;color:#a52720;font-size:22px;font-weight:800}
-.receipt-top{display:grid;grid-template-columns:1fr 1.25fr;gap:3mm;margin-top:4mm}
-.receipt-section{border:1px solid var(--line);border-radius:9px;padding:3mm;margin-bottom:3mm}
-.receipt-section h2{margin:0 0 3mm;color:var(--green-900);font-size:13px}
-.amount-box{background:var(--green-050);border:1px solid var(--line);border-radius:8px;padding:3mm}
-.amount-main{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:end}
-.amount-symbol{font-size:30px;color:var(--green-800);font-weight:800}
-.concepts{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:9px;overflow:hidden}
-.concept{padding:3mm;text-align:center;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:25mm}
-.concept:nth-child(4n){border-right:0}
-.concept:nth-last-child(-n+4){border-bottom:0}
-.concept b{display:block;color:var(--green-900);margin-bottom:2mm;font-size:10px}
-.concept span{font-size:17px}
-.payment-grid{display:grid;grid-template-columns:.8fr 1.3fr 1fr;gap:3mm}
-.check-list{font-size:10px;line-height:2}
-.receipt-sign{border:1px solid var(--line);border-radius:9px;padding:4mm;background:var(--green-050);text-align:center}
-.receipt-sign h3{margin:0 0 4mm;color:var(--green-900);font:italic 18px Georgia,serif}
-.receipt-footer{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm;margin-top:4mm}
-@media print{
-  .receipt-top{grid-template-columns:1fr 1.25fr!important}
-  .payment-grid{grid-template-columns:.8fr 1.3fr 1fr!important}
-  .receipt-footer{grid-template-columns:1fr 1fr 1fr!important}
-  .concepts{grid-template-columns:repeat(4,1fr)!important}
+:root{--rg:#0b4f2a;--rs:#f7faf4}
+.receipt-wrap{display:flex;justify-content:center;padding:12px}
+.receipt-card{
+  width:139.7mm;height:107.95mm;background:#fff;border:1.4mm solid var(--rg);
+  border-radius:5mm;padding:4.5mm 5mm 4mm;color:#111;box-shadow:0 8px 24px rgba(0,0,0,.12);
+  overflow:hidden
 }
+.receipt-head{display:grid;grid-template-columns:27mm 1fr 31mm;gap:4mm;align-items:start}
+.receipt-logo{width:25mm;height:25mm;object-fit:contain}
+.receipt-heading h1{margin:1mm 0 0;color:var(--rg);font-size:10mm;line-height:.95}
+.receipt-heading h2{margin:2mm 0 0;color:var(--rg);font-size:4.3mm}
+.folio-box{border:.5mm solid var(--rg);border-radius:4mm;padding:2.5mm 2mm;text-align:center;min-height:24mm}
+.folio-box b{display:block;color:var(--rg);font-size:4.2mm}
+.folio-line{margin-top:5mm;font-size:5mm;letter-spacing:1mm}
+.receipt-fields{margin-top:3mm}
+.field{display:grid;grid-template-columns:auto 1fr;gap:2mm;align-items:end;margin:1.55mm 0;font-size:3.8mm}
+.field.amount{grid-template-columns:auto auto 1fr}
+.field .line{min-height:4.5mm;border-bottom:.35mm solid #34473a}
+.divider{border-top:.45mm solid var(--rg);margin:2mm 0 1.5mm}
+.payment-row{display:grid;grid-template-columns:auto auto auto 1fr;gap:3mm;align-items:center;margin:1.4mm 0;font-size:3.8mm}
+.check{display:inline-flex;align-items:center;gap:1.2mm;white-space:nowrap}
+.square{width:4mm;height:4mm;border:.35mm solid #34473a;display:inline-block}
+.receipt-bottom{display:grid;grid-template-columns:1.05fr 1fr;gap:5mm;align-items:end;margin-top:2mm}
+.thanks{border:.4mm solid var(--rg);border-radius:4mm;background:var(--rs);padding:3mm 4mm;min-height:22mm}
+.thanks strong{display:block;color:var(--rg);font-size:4.5mm;margin-bottom:1mm}
+.thanks span{font-size:3.5mm}
+.received-by{font-size:3.5mm}
+.received-by .field{margin:1.1mm 0;font-size:3.5mm}
+.signature-label{text-align:center;font-size:3.7mm;margin-top:1.5mm}
+.screen-note{max-width:139.7mm;margin:0 auto 10px;font-size:13px;color:#566159;text-align:center}
+@page{size:139.7mm 107.95mm;margin:0}
+@media print{
+  html,body{width:139.7mm!important;height:107.95mm!important;margin:0!important;padding:0!important;background:#fff!important;overflow:hidden!important}
+  .site-header,.doc-toolbar,.screen-note{display:none!important}
+  .page-shell{max-width:none!important;margin:0!important;padding:0!important}
+  .receipt-wrap{padding:0!important}
+  .receipt-card{width:139.7mm!important;height:107.95mm!important;margin:0!important;box-shadow:none!important}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+}
+@media screen and (max-width:700px){.receipt-wrap{overflow:auto;justify-content:flex-start}}
 </style>
 </head>
 <body>
-
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="../index.html">
@@ -62,85 +70,61 @@
     <button class="btn" id="toggle-edit">Editar textos</button>
     <button class="btn" id="download-html">Descargar HTML modificado</button>
   </div>
-  <main class="document receipt-document">
-    <header class="receipt-header">
-      <img class="doc-logo" src="../assets/logo-villa-los-robles.jpg" alt="Logo oficial">
-      <div>
-        <h1 class="receipt-title" data-editable>RECIBO OFICIAL</h1>
-        <div class="receipt-subtitle" data-editable>JUNTA DE VECINOS VILLA LOS ROBLES</div>
-        <div class="receipt-slogan" data-editable>Unidos construimos comunidad</div>
-      </div>
-      <div>
-        <div class="receipt-number">
-          <strong>N.º DE RECIBO</strong>
-          <div data-editable>0001</div>
+
+  <p class="screen-note">Formato compacto: un cuarto de carta, orientación horizontal. Folio manual.</p>
+
+  <div class="receipt-wrap">
+    <main class="receipt-card">
+      <header class="receipt-head">
+        <img class="receipt-logo" src="../assets/logo-villa-los-robles.jpg" alt="Logo oficial">
+        <div class="receipt-heading">
+          <h1 data-editable>RECIBO OFICIAL</h1>
+          <h2 data-editable>Junta de Vecinos Villa Los Robles</h2>
         </div>
-        <div class="row one" style="margin-top:2mm"><span>Fecha:</span><span class="line"></span></div>
-      </div>
-    </header>
-
-    <div class="receipt-top">
-      <section class="receipt-section">
-        <h2>1. RECIBIMOS DE</h2>
-        <div class="row one"><span>Nombre completo:</span><span class="line"></span></div>
-        <div class="row one"><span>RUT:</span><span class="line"></span></div>
-      </section>
-      <section class="receipt-section">
-        <h2>2. DETALLE DEL PAGO</h2>
-        <div class="amount-box">
-          <div class="amount-main"><span class="amount-symbol">$</span><span class="line"></span></div>
-          <div class="row one"><span>En palabras:</span><span class="line"></span></div>
+        <div class="folio-box">
+          <b data-editable>FOLIO N.º</b>
+          <div class="folio-line" data-editable>______</div>
         </div>
+      </header>
+
+      <section class="receipt-fields">
+        <div class="field"><span>Fecha:</span><span class="line"></span></div>
+        <div class="field"><span>Recibí de:</span><span class="line"></span></div>
+        <div class="field"><span>RUT:</span><span class="line"></span></div>
+        <div class="field amount"><span>La cantidad de:</span><span>$</span><span class="line"></span></div>
+        <div class="field"><span>Por concepto de:</span><span class="line"></span></div>
+
+        <div class="divider"></div>
+
+        <div class="payment-row">
+          <span>Medio de pago:</span>
+          <span class="check"><span class="square"></span> Efectivo</span>
+          <span class="check"><span class="square"></span> Transferencia</span>
+          <span class="check"><span class="square"></span> Otro: <span class="line" style="min-width:36mm"></span></span>
+        </div>
+
+        <div class="field"><span>N.º de comprobante / transferencia:</span><span class="line"></span></div>
+        <div class="field"><span>Banco / institución:</span><span class="line"></span></div>
+        <div class="field"><span>Observaciones:</span><span class="line"></span></div>
       </section>
-    </div>
 
-    <section class="receipt-section">
-      <h2>3. CONCEPTO DEL INGRESO <small>(marque con una X)</small></h2>
-      <div class="concepts">
-        <div class="concept"><span>□</span><b data-editable>Uso de sede</b></div>
-        <div class="concept"><span>□</span><b data-editable>Garantía</b></div>
-        <div class="concept"><span>□</span><b data-editable>Cuota social</b></div>
-        <div class="concept"><span>□</span><b data-editable>Donación</b></div>
-        <div class="concept"><span>□</span><b data-editable>Actividad</b></div>
-        <div class="concept"><span>□</span><b data-editable>Proyecto</b></div>
-        <div class="concept"><span>□</span><b data-editable>Venta</b></div>
-        <div class="concept"><span>□</span><b data-editable>Otro</b><div class="line"></div></div>
-      </div>
-    </section>
+      <section class="receipt-bottom">
+        <div class="thanks">
+          <strong data-editable>¡Gracias por tu aporte! ♥</strong>
+          <span data-editable>Cuidemos nuestra sede, es de todos.</span>
+        </div>
 
-    <div class="payment-grid">
-      <section class="receipt-section">
-        <h2>4. FORMA DE PAGO</h2>
-        <div class="check-list">
-          □ Efectivo<br>
-          □ Transferencia<br>
-          □ Tarjeta de débito<br>
-          □ Tarjeta de crédito<br>
-          □ Otro: __________________
+        <div class="received-by">
+          <div style="margin-bottom:1mm">Recibido por:</div>
+          <div class="field"><span>Nombre:</span><span class="line"></span></div>
+          <div class="field"><span>Cargo:</span><span class="line"></span></div>
+          <div class="signature-label">FIRMA</div>
         </div>
       </section>
-      <section class="receipt-section">
-        <h2>5. DETALLE ADICIONAL</h2>
-        <div class="row one"><span>N.º comprobante / transferencia:</span><span class="line"></span></div>
-        <div class="row one"><span>Banco / institución:</span><span class="line"></span></div>
-        <div class="row one"><span>Observaciones:</span><span class="line"></span></div>
-        <div class="row one"><span></span><span class="line"></span></div>
-      </section>
-      <section class="receipt-sign">
-        <h3>Recibido conforme</h3>
-        <div class="row one"><span>Nombre:</span><span class="line"></span></div>
-        <div class="row one"><span>Cargo:</span><span class="line"></span></div>
-        <div class="row one"><span>Firma:</span><span class="line"></span></div>
-      </section>
-    </div>
-
-    <footer class="receipt-footer">
-      <div class="footer-box"><b>IMPORTANTE</b><br>Este recibo sirve como respaldo del ingreso registrado. Conserve una copia.</div>
-      <div class="footer-box footer-brand"><img src="../assets/logo-villa-los-robles.jpg" alt=""><b>JUNTA DE VECINOS<br>VILLA LOS ROBLES</b></div>
-      <div class="footer-box">Documento: F02 · Recibo oficial<br>Versión: 1.0<br>Vigente desde: Agosto 2026</div>
-    </footer>
-  </main>
+    </main>
+  </div>
 </div>
+
 <script src="../js/app.js"></script>
 </body>
 </html>

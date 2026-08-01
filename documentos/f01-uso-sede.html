@@ -1,17 +1,80 @@
 <!doctype html>
 <html lang="es">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>F01 · Uso de la sede</title><link rel="stylesheet" href="../css/styles.css"></head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>F01 · Uso de la sede</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    @page{size:letter portrait;margin:0}
+    .document{
+      width:215.9mm;
+      min-height:279.4mm;
+      padding:3.5mm;
+    }
+    .doc-header{grid-template-columns:24mm 1fr 39mm;gap:3mm;padding-bottom:2mm}
+    .doc-logo{width:22mm;height:22mm}
+    .doc-title{font-size:22px}
+    .doc-subtitle{font-size:13px}
+    .doc-slogan{font-size:12px}
+    .control{font-size:7.5px}
+    .control div{grid-template-columns:1fr 1.15fr}
+    .quick{margin:1.5mm 0}
+    .quick div{padding:1.5mm;font-size:7.5px}
+    .datos-superiores{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:2.5mm}
+    .datos-superiores>.panel{height:100%;margin:0}
+    .section-title{margin-bottom:1.5mm}
+    .row{margin:1.5mm 0}
+    .inventory-panel{padding:2.5mm}
+    .inventory-table{table-layout:fixed}
+    .inventory-table th{font-size:6.7px;padding:3px 2px}
+    .inventory-table td{font-size:7px;padding:2px 3px;height:18px}
+    .inventory-table .icon{width:7%;text-align:center;font-size:11px;padding:1px}
+    .inventory-table .item{width:22%}
+    .inventory-table .qty{width:6%;text-align:center;font-weight:700}
+    .state-acceptance{padding:2.5mm;margin-top:2.5mm}
+    .state-acceptance h2{display:flex;align-items:center;gap:6px}
+    .state-layout{display:grid;grid-template-columns:1.25fr .75fr;gap:2mm}
+    .paper-box{border:1px solid var(--line);border-radius:6px;padding:2mm;background:#fff}
+    .paper-box-title{display:block;color:var(--green-900);font-size:7.8px;font-weight:700;margin-bottom:1mm}
+    .state-checks{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+    .state-checks div{padding:3px 4px;font-size:6.8px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .state-checks div:nth-child(3n){border-right:0}
+    .state-checks div:nth-last-child(-n+3){border-bottom:0}
+    .paper-check{display:inline-block;width:2.8mm;height:2.8mm;border:1px solid #55635a;margin-right:3px;vertical-align:-.6mm;background:#fff}
+    .writing-line{display:block;height:6mm;border-bottom:1px solid #7c887e}
+    .signature-grid{display:grid;grid-template-columns:1.25fr .8fr 1fr;gap:2mm;margin-top:2mm}
+    .signature-box{border:1px solid var(--line);border-radius:6px;padding:1.5mm;background:#fff;min-height:13mm;font-size:7.5px}
+    .signature-box .row{margin:1mm 0}
+    .reception{padding:2.5mm;margin-top:2.5mm}
+    .reception-layout{display:grid;grid-template-columns:1.25fr .75fr;gap:2mm}
+    .outcome{font-size:7.5px;line-height:1.45}
+    .footer{margin-top:2.5mm}
+    .footer-box{font-size:6.8px;padding:1.6mm}
+    .footer-brand img{width:15mm;height:15mm}
+    @media print{
+      html,body{width:215.9mm!important;height:279.4mm!important;margin:0!important;padding:0!important;background:#fff!important}
+      .document{width:215.9mm!important;min-height:0!important;margin:0!important;padding:3.5mm!important;box-shadow:none!important;overflow:hidden!important}
+      .datos-superiores,.state-layout,.state-checks,.signature-grid,.reception-layout,.footer{display:grid!important}
+    }
+    @media screen and (max-width:900px){
+      .document{width:100%;min-height:auto;padding:12px}
+      .datos-superiores,.state-layout,.signature-grid,.reception-layout{grid-template-columns:1fr}
+      .inventory-panel{overflow-x:auto}
+      .inventory-table{min-width:760px}
+    }
+  </style>
+</head>
 <body>
-
 <header class="site-header">
   <div class="header-inner">
     <a class="brand" href="../index.html">
       <img src="../assets/logo-villa-los-robles.jpg" alt="Logo Villa Los Robles">
       <span>Villa Los Robles<small>Portal documental</small></span>
     </a>
-    <nav>
+    <nav aria-label="Documentos">
       <a href="../index.html">Inicio</a>
-      <a href="f01-uso-sede.html">F01 · Uso de sede</a>
+      <a href="f01-uso-sede.html" aria-current="page">F01 · Uso de sede</a>
       <a href="f02-recibo.html">F02 · Recibo</a>
       <a href="d01-reglamento.html">D01 · Reglamento</a>
     </nav>
@@ -20,25 +83,26 @@
 
 <div class="page-shell">
   <div class="doc-toolbar">
-    <button class="btn" id="print-doc">Imprimir / Guardar PDF</button>
-    <button class="btn" id="toggle-edit">Editar textos</button>
-    <button class="btn" id="download-html">Descargar HTML modificado</button>
+    <button class="btn" id="print-doc" type="button">Imprimir / Guardar PDF</button>
+    <span style="align-self:center;font-size:12px;color:#566159">Use papel Carta, escala 100 % y desactive “Encabezados y pies de página”.</span>
   </div>
+
   <main class="document">
     <header class="doc-header">
       <img class="doc-logo" src="../assets/logo-villa-los-robles.jpg" alt="Logo oficial">
       <div>
-        <h1 class="doc-title" data-editable>EXPEDIENTE DE USO DE LA SEDE</h1>
-        <div class="doc-subtitle" data-editable>CONTRATO DE USO TEMPORAL + ACTA DE RECEPCIÓN</div>
-        <div class="doc-slogan" data-editable>Juntos cuidamos nuestra sede</div>
+        <h1 class="doc-title">EXPEDIENTE DE USO DE LA SEDE</h1>
+        <div class="doc-subtitle">CONTRATO DE USO TEMPORAL + ACTA DE RECEPCIÓN</div>
+        <div class="doc-slogan">Juntos cuidamos nuestra sede</div>
       </div>
       <div class="control">
         <strong>CONTROL DEL EXPEDIENTE</strong>
-        <div><span>Expediente N.º</span><span data-editable>2026-___</span></div>
-        <div><span>Fecha</span><span data-editable>___ / ___ / 2026</span></div>
-        <div><span>Estado</span><span data-editable>● EN USO</span></div>
+        <div><span>Expediente N.º</span><span>2026-___</span></div>
+        <div><span>Fecha</span><span>___ / ___ / 2026</span></div>
+        <div><span>Estado</span><span>● EN USO</span></div>
       </div>
     </header>
+
     <div class="quick">
       <div><b>Horario</b><br>09:30 a 22:00 hrs.</div>
       <div><b>Llaves</b><br>No se entregan.</div>
@@ -46,74 +110,92 @@
       <div><b>Devolución</b><br>Limpia y ordenada.</div>
       <div><b>Estacionamientos</b><br>Máximo 2 vehículos.</div>
     </div>
-    <div class="top-grid">
-      <div>
-        <section class="panel">
-          <h2 class="section-title"><span class="num">1</span> DATOS DEL RESPONSABLE</h2>
-          <div class="row one"><span>Nombre completo:</span><span class="line"></span></div>
-          <div class="row"><span>RUT:</span><span class="line"></span><span>Teléfono:</span><span class="line"></span></div>
-          <div class="row one"><span>Dirección:</span><span class="line"></span></div>
-          <div class="row one"><span>Correo electrónico:</span><span class="line"></span></div>
-        </section>
-        <section class="panel">
-          <h2 class="section-title"><span class="num">2</span> DATOS DE LA ACTIVIDAD</h2>
-          <div class="row one"><span>Fecha de uso:</span><span class="line"></span></div>
-          <div class="row"><span>Inicio:</span><span class="line"></span><span>Término:</span><span class="line"></span></div>
-          <div class="row one"><span>Motivo / descripción:</span><span class="line"></span></div>
-          <div class="row one"><span>Asistentes aproximados:</span><span class="line"></span></div>
-        </section>
-      </div>
+
+    <section class="datos-superiores">
       <section class="panel">
-        <h2 class="section-title"><span class="num">4</span> BIENES Y ELEMENTOS DISPONIBLES EN LA SEDE</h2>
-        <table>
-          <tr><th>✓</th><th>ELEMENTO</th><th>CANT.</th><th>✓</th><th>ELEMENTO</th><th>CANT.</th></tr>
-          <tr><td>□</td><td data-editable>Electricidad</td><td>—</td><td>□</td><td data-editable>Sillas azules</td><td data-editable>25</td></tr>
-          <tr><td>□</td><td data-editable>Agua</td><td>—</td><td>□</td><td data-editable>Sillas rojas (7)</td><td data-editable>7</td></tr>
-          <tr><td>□</td><td data-editable>Regulador de gas</td><td data-editable>2</td><td>□</td><td data-editable>Escoba</td><td data-editable>1</td></tr>
-          <tr><td>□</td><td data-editable>Horno con parrilla</td><td data-editable>1</td><td>□</td><td data-editable>Pala</td><td data-editable>2</td></tr>
-          <tr><td>□</td><td data-editable>Refrigerador</td><td data-editable>1</td><td>□</td><td data-editable>Estacionamientos</td><td data-editable>2</td></tr>
-          <tr><td>□</td><td data-editable>Tablas de picar</td><td data-editable>4</td><td>□</td><td data-editable>Cocina</td><td data-editable>1</td></tr>
-          <tr><td>□</td><td data-editable>Mesones</td><td data-editable>2</td><td>□</td><td data-editable>Otros</td><td data-editable>—</td></tr>
-          <tr><td>□</td><td data-editable>Mesas plegables</td><td data-editable>2</td><td></td><td></td><td></td></tr>
-          <tr><td>□</td><td data-editable>Sillas rojas (11)</td><td data-editable>11</td><td></td><td></td><td></td></tr>
-        </table>
+        <h2 class="section-title"><span class="num">1</span> DATOS DEL RESPONSABLE</h2>
+        <div class="row one"><span>Nombre completo:</span><span class="line"></span></div>
+        <div class="row"><span>RUT:</span><span class="line"></span><span>Teléfono:</span><span class="line"></span></div>
+        <div class="row one"><span>Dirección:</span><span class="line"></span></div>
+        <div class="row one"><span>Correo electrónico:</span><span class="line"></span></div>
       </section>
-    </div>
-    <section class="panel">
-      <h2 class="section-title"><span class="num">3</span> ESTADO INICIAL DE LA SEDE</h2>
-      <div class="state-grid">
-        <label>□ Baño limpio</label><label>□ Cocina limpia</label><label>□ Otras zonas limpias</label>
-        <label>□ Patio / cancha limpio</label><label>□ Sin daños visibles</label><label>□ Inventario completo</label>
-      </div>
-      <div class="row one"><span>Observaciones del estado inicial:</span><span class="line"></span></div>
+
+      <section class="panel">
+        <h2 class="section-title"><span class="num">2</span> DATOS DE LA ACTIVIDAD</h2>
+        <div class="row one"><span>Fecha de uso:</span><span class="line"></span></div>
+        <div class="row"><span>Inicio:</span><span class="line"></span><span>Término:</span><span class="line"></span></div>
+        <div class="row one"><span>Motivo / descripción:</span><span class="line"></span></div>
+        <div class="row one"><span>Asistentes aproximados:</span><span class="line"></span></div>
+      </section>
     </section>
-    <section class="banner user">
-      <h2 data-editable>ACEPTACIÓN Y RECEPCIÓN INICIAL POR PARTE DEL USUARIO</h2>
-      <p data-editable>El usuario declara recibir la sede y los bienes señalados en este documento, aceptar el Reglamento de Uso vigente y comprometerse a devolver la sede en el mismo estado, salvo el desgaste normal por su uso.</p>
-      <div class="banner-grid">
-        <div class="box"><div class="row one"><span>Nombre completo:</span><span class="line"></span></div><div class="row one"><span>RUT:</span><span class="line"></span></div></div>
-        <div class="box"><div class="row one"><span>Firma:</span><span class="line"></span></div></div>
-        <div class="box"><div class="row one"><span>Fecha y hora:</span><span class="line"></span></div></div>
-      </div>
+
+    <section class="panel inventory-panel">
+      <h2 class="section-title"><span class="num">4</span> BIENES Y ELEMENTOS DISPONIBLES EN LA SEDE</h2>
+      <table class="inventory-table">
+        <thead>
+          <tr>
+            <th class="icon">ÍCONO</th><th class="item">ELEMENTO</th><th class="qty">CANT.</th>
+            <th class="icon">ÍCONO</th><th class="item">ELEMENTO</th><th class="qty">CANT.</th>
+            <th class="icon">ÍCONO</th><th class="item">ELEMENTO</th><th class="qty">CANT.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="icon">⚡</td><td>Electricidad</td><td class="qty">—</td><td class="icon">🪑</td><td>Mesones</td><td class="qty">2</td><td class="icon">🪣</td><td>Pala</td><td class="qty">2</td></tr>
+          <tr><td class="icon">💧</td><td>Agua</td><td class="qty">—</td><td class="icon">🪑</td><td>Mesas plegables</td><td class="qty">2</td><td class="icon">🚗</td><td>Estacionamientos</td><td class="qty">2</td></tr>
+          <tr><td class="icon">🛢️</td><td>Regulador de gas</td><td class="qty">2</td><td class="icon">🪑</td><td>Sillas rojas (11)</td><td class="qty">11</td><td class="icon">🍳</td><td>Cocina</td><td class="qty">1</td></tr>
+          <tr><td class="icon">🔥</td><td>Horno con parrilla</td><td class="qty">1</td><td class="icon">🪑</td><td>Sillas azules</td><td class="qty">25</td><td class="icon">📦</td><td>Otros</td><td class="qty">—</td></tr>
+          <tr><td class="icon">🧊</td><td>Refrigerador</td><td class="qty">1</td><td class="icon">🪑</td><td>Sillas rojas (7)</td><td class="qty">7</td><td></td><td></td><td></td></tr>
+          <tr><td class="icon">🔪</td><td>Tablas de picar</td><td class="qty">4</td><td class="icon">🧹</td><td>Escoba</td><td class="qty">1</td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
     </section>
-    <section class="banner jjvv">
-      <h2 data-editable>RECEPCIÓN FINAL POR PARTE DE LA JUNTA DE VECINOS</h2>
-      <p data-editable>El representante de la Junta de Vecinos declara haber recibido la sede y los bienes señalados, dejando constancia del estado en que se entregan.</p>
-      <div class="jjvv-grid">
-        <div class="box">
-          <div class="row one"><span>Observaciones de recepción:</span><span class="line"></span></div>
-          <div class="row one"><span></span><span class="line"></span></div>
+
+    <section class="banner user state-acceptance">
+      <h2><span class="num">3</span> ESTADO INICIAL Y ACEPTACIÓN DEL USUARIO</h2>
+      <p>El usuario declara recibir la sede y los bienes señalados en este documento, aceptar el Reglamento de Uso vigente y comprometerse a devolver la sede en el mismo estado, salvo el desgaste normal por su uso.</p>
+      <div class="state-layout">
+        <div class="paper-box">
+          <b class="paper-box-title">Estado inicial de la sede</b>
+          <div class="state-checks">
+            <div><i class="paper-check"></i>Baño limpio</div>
+            <div><i class="paper-check"></i>Cocina limpia</div>
+            <div><i class="paper-check"></i>Otras zonas limpias</div>
+            <div><i class="paper-check"></i>Patio / cancha limpio</div>
+            <div><i class="paper-check"></i>Sin daños visibles</div>
+            <div><i class="paper-check"></i>Inventario completo</div>
+          </div>
         </div>
-        <div class="box outcome"><b>Estado final</b><br>□ Conforme<br>□ Conforme con observaciones<br>□ No conforme</div>
+        <div class="paper-box">
+          <b class="paper-box-title">Observaciones del estado inicial</b>
+          <span class="writing-line"></span><span class="writing-line"></span>
+        </div>
       </div>
-      <div class="banner-grid" style="margin-top:2mm">
-        <div class="box"><div class="row one"><span>Nombre de quien recibe (JJ.VV.):</span><span class="line"></span></div></div>
-        <div class="box"><div class="row one"><span>Firma:</span><span class="line"></span></div></div>
-        <div class="box"><div class="row one"><span>Fecha y hora:</span><span class="line"></span></div></div>
+      <div class="signature-grid">
+        <div class="signature-box"><div class="row one"><span>Nombre completo:</span><span class="line"></span></div><div class="row one"><span>RUT:</span><span class="line"></span></div></div>
+        <div class="signature-box"><div class="row one"><span>Firma:</span><span class="line"></span></div></div>
+        <div class="signature-box"><div class="row one"><span>Fecha y hora:</span><span class="line"></span></div></div>
       </div>
     </section>
+
+    <section class="banner jjvv reception">
+      <h2>RECEPCIÓN FINAL POR PARTE DE LA JUNTA DE VECINOS</h2>
+      <p>El representante de la Junta de Vecinos declara haber recibido la sede y los bienes señalados, dejando constancia del estado en que se entregan.</p>
+      <div class="reception-layout">
+        <div class="paper-box">
+          <span style="font-size:7.5px">Observaciones de recepción:</span>
+          <span class="writing-line"></span><span class="writing-line"></span>
+        </div>
+        <div class="paper-box outcome"><b>Estado final</b><br><i class="paper-check"></i>Conforme<br><i class="paper-check"></i>Conforme con observaciones<br><i class="paper-check"></i>No conforme</div>
+      </div>
+      <div class="signature-grid">
+        <div class="signature-box"><div class="row one"><span>Nombre de quien recibe (JJ.VV.):</span><span class="line"></span></div></div>
+        <div class="signature-box"><div class="row one"><span>Firma:</span><span class="line"></span></div></div>
+        <div class="signature-box"><div class="row one"><span>Fecha y hora:</span><span class="line"></span></div></div>
+      </div>
+    </section>
+
     <footer class="footer">
-      <div class="footer-box footer-brand"><img src="../assets/logo-villa-los-robles.jpg"><b>JUNTA DE VECINOS<br>VILLA LOS ROBLES</b></div>
+      <div class="footer-box footer-brand"><img src="../assets/logo-villa-los-robles.jpg" alt=""><b>JUNTA DE VECINOS<br>VILLA LOS ROBLES</b></div>
       <div class="footer-box"><b>IMPORTANTE</b><br>No se entregan llaves. La sede debe devolverse limpia, ordenada y en las mismas condiciones en que fue recibida.</div>
       <div class="footer-box">Documento: F01 · Uso de la sede<br>Versión: 1.0<br>Vigente desde: Agosto 2026</div>
     </footer>

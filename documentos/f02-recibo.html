@@ -24,33 +24,38 @@
   border:.2mm dashed #aeb8ae;overflow:hidden
 }
 .receipt-card{
-  width:107.95mm;height:139.7mm;background:#fff;border:1.1mm solid var(--rg);
+  width:107.95mm;height:138.5mm;background:#fff;border:1.1mm solid var(--rg);
   border-radius:3mm;padding:3.6mm;color:#111;overflow:hidden
 }
-.receipt-head{display:grid;grid-template-columns:20mm 1fr 24mm;gap:2.5mm;align-items:start}
+.receipt-head{display:grid;grid-template-columns:1fr 24mm;gap:2.5mm;align-items:start}
 .receipt-logo{width:18mm;height:18mm;object-fit:contain}
 .receipt-heading h1{margin:.4mm 0 0;color:var(--rg);font-size:6.5mm;line-height:.92}
 .receipt-heading h2{margin:1.2mm 0 0;color:var(--rg);font-size:2.9mm;line-height:1.08}
-.folio-box{border:.35mm solid var(--rg);border-radius:2.5mm;padding:1.6mm 1.2mm;text-align:center;min-height:18mm}
+.receipt-heading{text-align:left}
+.folio-box{border:.35mm solid var(--rg);border-radius:2.5mm;padding:1.6mm 1.2mm;text-align:center;min-height:18mm;margin-top:0;align-self:start}
 .folio-box b{display:block;color:var(--rg);font-size:2.9mm}
 .folio-line{margin-top:3.6mm;font-size:3.6mm;letter-spacing:.6mm}
 .receipt-fields{margin-top:2.4mm}
 .field{display:grid;grid-template-columns:auto 1fr;gap:1.3mm;align-items:end;margin:1.35mm 0;font-size:2.9mm}
 .field.amount{grid-template-columns:auto auto 1fr}
 .field .line{min-height:3.7mm;border-bottom:.25mm solid var(--line)}
-.divider{border-top:.3mm solid var(--rg);margin:1.7mm 0 1.2mm}
+.field.continuation{margin-top:-.4mm}
 .payment-title{font-size:2.9mm;margin-bottom:1.1mm}
 .payment-options{display:grid;grid-template-columns:1fr 1.3fr;gap:1mm 1.6mm;font-size:2.8mm}
 .check{display:flex;align-items:center;gap:.8mm}
 .square{width:3.1mm;height:3.1mm;border:.25mm solid var(--line);display:inline-block;flex:0 0 auto}
 .other-row{display:grid;grid-template-columns:auto 1fr;gap:1.2mm;align-items:end;margin-top:1mm;font-size:2.8mm}
 .receipt-bottom{display:grid;grid-template-columns:1fr;gap:1.5mm;margin-top:1.6mm}
+.receipt-closing{display:grid;grid-template-columns:33.75mm 1fr;gap:2mm;align-items:center}
+.closing-logo{width:22.5mm;height:22.5mm;object-fit:contain;margin-left:11.25mm}
 .thanks{border:.3mm solid var(--rg);border-radius:2.5mm;background:var(--rs);padding:2mm 2.5mm}
+.receipt-closing .thanks{width:max-content;justify-self:center;text-align:center}
 .thanks strong{display:block;color:var(--rg);font-size:3.3mm;margin-bottom:.5mm}
 .thanks span{font-size:2.5mm}
 .received-by{border-top:.3mm solid var(--rg);padding-top:1.5mm;font-size:2.6mm}
 .received-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6mm}
-.signature-label{text-align:center;font-size:2.9mm;margin-top:1mm}
+.signature-label{display:flex;flex-direction:column;align-items:center;font-size:2.9mm;margin-top:1mm}
+.signature-line{display:block;width:100%;min-height:8mm;border-bottom:.25mm solid var(--line)}
 .screen-note{max-width:215.9mm;margin:0 auto 10px;font-size:13px;color:#566159;text-align:center}
 .mode-1 .receipt-slot:nth-child(n+2){display:none}
 .mode-2 .receipt-slot:nth-child(n+3){display:none}
@@ -120,9 +125,8 @@
   <div class="receipt-slot">
     <main class="receipt-card">
       <header class="receipt-head">
-        <img class="receipt-logo" src="../assets/logo-villa-los-robles.jpg" alt="Logo oficial">
         <div class="receipt-heading">
-          <h1 data-editable>RECIBO OFICIAL</h1>
+          <h1 data-editable>COMPROBANTE DE INGRESO</h1>
           <h2 data-editable>Junta de Vecinos Villa Los Robles</h2>
         </div>
         <div class="folio-box">
@@ -137,8 +141,7 @@
         <div class="field"><span>RUT:</span><span class="line"></span></div>
         <div class="field amount"><span>La cantidad de:</span><span>$</span><span class="line"></span></div>
         <div class="field"><span>Por concepto de:</span><span class="line"></span></div>
-
-        <div class="divider"></div>
+        <div class="field continuation"><span></span><span class="line"></span></div>
 
         <div class="payment-title">Medio de pago:</div>
         <div class="payment-options">
@@ -153,10 +156,6 @@
       </section>
 
       <section class="receipt-bottom">
-        <div class="thanks">
-          <strong data-editable>¡Gracias por tu aporte! ♥</strong>
-          <span data-editable>Cuidemos nuestra sede, es de todos.</span>
-        </div>
         <div class="received-by">
           <div style="margin-bottom:1mm">Recibido por:</div>
           <div class="received-grid">
@@ -164,7 +163,14 @@
               <div class="field"><span>Nombre:</span><span class="line"></span></div>
               <div class="field"><span>Cargo:</span><span class="line"></span></div>
             </div>
-            <div class="signature-label">FIRMA</div>
+            <div class="signature-label">FIRMA Y TIMBRE<span class="signature-line"></span></div>
+          </div>
+        </div>
+        <div class="receipt-closing">
+          <img class="closing-logo" src="../assets/logo-villa-los-robles.jpg" alt="Logo oficial">
+          <div class="thanks">
+            <strong data-editable>¡Gracias por tu aporte! ♥</strong>
+            <span data-editable>Junta de Vecinos Los Robles<br>Juntos, haciendo comunidad.</span>
           </div>
         </div>
       </section>

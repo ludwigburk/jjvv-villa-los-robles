@@ -12,46 +12,63 @@
       min-height:279.4mm;
       padding:3.5mm;
     }
-    .doc-header{grid-template-columns:24mm 1fr 39mm;gap:3mm;padding-bottom:2mm}
+    .doc-header{grid-template-columns:24mm 1fr 58.5mm;gap:3mm;padding-bottom:2mm;border-bottom:0}
     .doc-logo{width:22mm;height:22mm}
     .doc-title{font-size:22px}
-    .doc-subtitle{font-size:13px}
-    .doc-slogan{font-size:12px}
-    .control{font-size:7.5px}
+    .doc-subtitle{font-size:14px}
+    .doc-slogan{font-size:13px}
+    .control{font-size:11px}
     .control div{grid-template-columns:1fr 1.15fr}
     .quick{margin:1.5mm 0}
-    .quick div{padding:1.5mm;font-size:7.5px}
+    .quick div{padding:1.7mm;font-size:11px}
     .datos-superiores{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-bottom:2.5mm}
     .datos-superiores>.panel{height:100%;margin:0}
-    .section-title{margin-bottom:1.5mm}
-    .row{margin:1.5mm 0}
+    .section-title{margin-bottom:1.5mm;font-size:13px}
+    .section-title small{margin-left:auto;color:var(--muted);font-size:11px;font-weight:400}
+    .row{margin:1.8mm 0;font-size:11px}
     .inventory-panel{padding:2.5mm}
-    .inventory-table{table-layout:fixed}
-    .inventory-table th{font-size:6.7px;padding:3px 2px}
-    .inventory-table td{font-size:7px;padding:2px 3px;height:18px}
-    .inventory-table .icon{width:7%;text-align:center;font-size:11px;padding:1px}
-    .inventory-table .item{width:22%}
-    .inventory-table .qty{width:6%;text-align:center;font-weight:700}
+    .inventory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4mm}
+    .inventory-table{table-layout:fixed;border-collapse:separate;border-spacing:0}
+    .inventory-table td{font-size:11px;padding:3px 4px;height:25px}
+    .inventory-table .check{width:14%;text-align:center;padding:1px}
+    .inventory-table .item{width:66%}
+    .inventory-table .qty{width:20%;text-align:center;font-weight:700}
     .state-acceptance{padding:2.5mm;margin-top:2.5mm}
     .state-acceptance h2{display:flex;align-items:center;gap:6px}
     .state-layout{display:grid;grid-template-columns:1.25fr .75fr;gap:2mm}
     .paper-box{border:1px solid var(--line);border-radius:6px;padding:2mm;background:#fff}
-    .paper-box-title{display:block;color:var(--green-900);font-size:7.8px;font-weight:700;margin-bottom:1mm}
-    .state-checks{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:5px;overflow:hidden}
-    .state-checks div{padding:3px 4px;font-size:6.8px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .state-checks div:nth-child(3n){border-right:0}
-    .state-checks div:nth-last-child(-n+3){border-bottom:0}
-    .paper-check{display:inline-block;width:2.8mm;height:2.8mm;border:1px solid #55635a;margin-right:3px;vertical-align:-.6mm;background:#fff}
+    .paper-box-title{display:block;color:var(--green-900);font-size:11px;font-weight:700;margin-bottom:1mm}
+    .state-checks{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+    .state-checks div{padding:4px 5px;font-size:11px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .state-checks div:nth-child(2n){border-right:0}
+    .state-checks div:nth-last-child(-n+2){border-bottom:0}
+    .paper-check{display:inline-block;width:3.4mm;height:3.4mm;border:1px solid #55635a;margin-right:4px;vertical-align:-.8mm;background:#fff}
     .writing-line{display:block;height:6mm;border-bottom:1px solid #7c887e}
     .signature-grid{display:grid;grid-template-columns:1.25fr .8fr 1fr;gap:2mm;margin-top:2mm}
-    .signature-box{border:1px solid var(--line);border-radius:6px;padding:1.5mm;background:#fff;min-height:13mm;font-size:7.5px}
+    .signature-box{border:1px solid var(--line);border-radius:6px;padding:1.8mm;background:#fff;min-height:14.5mm;font-size:11px}
     .signature-box .row{margin:1mm 0}
-    .reception{padding:2.5mm;margin-top:2.5mm}
-    .reception-layout{display:grid;grid-template-columns:1.25fr .75fr;gap:2mm}
-    .outcome{font-size:7.5px;line-height:1.45}
-    .footer{margin-top:2.5mm}
-    .footer-box{font-size:6.8px;padding:1.6mm}
+    .reception{width:100%;padding:2.5mm;margin:0}
+    .reception h2{display:flex;align-items:center;gap:6px}
+    .reception-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:2mm}
+    .outcome{font-size:11px;line-height:1.5}
+    .outcome-checks,.outcome-result-options{display:grid;gap:1px;margin-top:1mm}
+    .outcome-result{display:block;margin-top:1.5mm}
+    .final-reception-fields{display:grid;grid-template-rows:7mm 7mm 14mm 14mm;gap:1.5mm}
+    .final-reception-fields .row{margin:0;align-items:end}
+    .closing-area{display:grid;grid-template-columns:60% 1fr;gap:3mm;margin-top:2.5mm;align-items:stretch}
+    .closing-left{display:flex;flex-direction:column;gap:2.5mm}
+    .closing-brand{display:flex;align-items:center;font-size:16px;line-height:1.1;padding:1mm;flex:0 0 36.4mm;min-height:0;gap:3mm}
+    .closing-brand.footer-brand img{width:auto!important;height:34.02mm!important;max-width:100%;max-height:70mm;object-fit:contain;flex:0 0 auto}
+    .closing-brand b{flex:1;text-align:left}
+    .rules-panel{border:1px solid var(--line);border-radius:8px;background:var(--green-050);padding:2.5mm}
+    .rules-panel h2{margin:0;color:var(--green-900);font-size:13px}
+    .rules-panel ol{margin:1.5mm 0 0;padding-left:5mm;font-size:12px;line-height:1.25}
+    .rules-panel li{margin:.8mm 0}
+    .num{font-size:11px}
     .footer-brand img{width:15mm;height:15mm}
+    .state-acceptance p,.reception p{font-size:11px}
+    .state-acceptance h2,.reception h2{font-size:13px}
+    .reception .paper-box>span{font-size:11px!important}
     @media print{
       html,body{width:215.9mm!important;height:279.4mm!important;margin:0!important;padding:0!important;background:#fff!important}
       .document{width:215.9mm!important;min-height:0!important;margin:0!important;padding:3.5mm!important;box-shadow:none!important;overflow:hidden!important}
@@ -59,7 +76,7 @@
     }
     @media screen and (max-width:900px){
       .document{width:100%;min-height:auto;padding:12px}
-      .datos-superiores,.state-layout,.signature-grid,.reception-layout{grid-template-columns:1fr}
+      .datos-superiores,.state-layout,.signature-grid,.reception-layout,.closing-area{grid-template-columns:1fr}
       .inventory-panel{overflow-x:auto}
       .inventory-table{min-width:760px}
     }
@@ -103,14 +120,6 @@
       </div>
     </header>
 
-    <div class="quick">
-      <div><b>Horario</b><br>09:30 a 22:00 hrs.</div>
-      <div><b>Llaves</b><br>No se entregan.</div>
-      <div><b>Apertura y cierre</b><br>Representante JJ.VV.</div>
-      <div><b>Devolución</b><br>Limpia y ordenada.</div>
-      <div><b>Estacionamientos</b><br>Máximo 2 vehículos.</div>
-    </div>
-
     <section class="datos-superiores">
       <section class="panel">
         <h2 class="section-title"><span class="num">1</span> DATOS DEL RESPONSABLE</h2>
@@ -130,28 +139,34 @@
     </section>
 
     <section class="panel inventory-panel">
-      <h2 class="section-title"><span class="num">4</span> BIENES Y ELEMENTOS DISPONIBLES EN LA SEDE</h2>
-      <table class="inventory-table">
-        <thead>
-          <tr>
-            <th class="icon">ÍCONO</th><th class="item">ELEMENTO</th><th class="qty">CANT.</th>
-            <th class="icon">ÍCONO</th><th class="item">ELEMENTO</th><th class="qty">CANT.</th>
-            <th class="icon">ÍCONO</th><th class="item">ELEMENTO</th><th class="qty">CANT.</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="icon">⚡</td><td>Electricidad</td><td class="qty">—</td><td class="icon">🪑</td><td>Mesones</td><td class="qty">2</td><td class="icon">🪣</td><td>Pala</td><td class="qty">2</td></tr>
-          <tr><td class="icon">💧</td><td>Agua</td><td class="qty">—</td><td class="icon">🪑</td><td>Mesas plegables</td><td class="qty">2</td><td class="icon">🚗</td><td>Estacionamientos</td><td class="qty">2</td></tr>
-          <tr><td class="icon">🛢️</td><td>Regulador de gas</td><td class="qty">2</td><td class="icon">🪑</td><td>Sillas rojas (11)</td><td class="qty">11</td><td class="icon">🍳</td><td>Cocina</td><td class="qty">1</td></tr>
-          <tr><td class="icon">🔥</td><td>Horno con parrilla</td><td class="qty">1</td><td class="icon">🪑</td><td>Sillas azules</td><td class="qty">25</td><td class="icon">📦</td><td>Otros</td><td class="qty">—</td></tr>
-          <tr><td class="icon">🧊</td><td>Refrigerador</td><td class="qty">1</td><td class="icon">🪑</td><td>Sillas rojas (7)</td><td class="qty">7</td><td></td><td></td><td></td></tr>
-          <tr><td class="icon">🔪</td><td>Tablas de picar</td><td class="qty">4</td><td class="icon">🧹</td><td>Escoba</td><td class="qty">1</td><td></td><td></td><td></td></tr>
-        </tbody>
-      </table>
+      <h2 class="section-title"><span class="num">3</span> INVENTARIO RECIBIDO EN LA SEDE <small>Marcar lo recibido.</small></h2>
+      <div class="inventory-grid">
+        <table class="inventory-table"><tbody>
+          <tr><td class="check"><i class="paper-check"></i></td><td class="item">Electricidad</td><td class="qty">—</td></tr>
+          <tr><td class="check"><i class="paper-check"></i></td><td class="item">Agua</td><td class="qty">—</td></tr>
+          <tr><td class="check"><i class="paper-check"></i></td><td class="item">Reguladores de gas</td><td class="qty">2</td></tr>
+          <tr><td class="check"><i class="paper-check"></i></td><td class="item">Cocina</td><td class="qty">1</td></tr>
+          <tr><td class="check"><i class="paper-check"></i></td><td class="item">Horno con parrilla</td><td class="qty">1</td></tr>
+        </tbody></table>
+        <table class="inventory-table"><tbody>
+          <tr><td class="check"><i class="paper-check"></i></td><td class="item">Refrigerador</td><td class="qty">1</td></tr>
+          <tr><td class="check"><i class="paper-check"></i></td><td class="item">Mesones</td><td class="qty">2</td></tr>
+          <tr><td class="check"><i class="paper-check"></i></td><td class="item">Mesas plegables</td><td class="qty">2</td></tr>
+          <tr><td class="check"><i class="paper-check"></i></td><td class="item">Sillas</td><td class="qty">43</td></tr>
+          <tr><td class="check"><i class="paper-check"></i></td><td class="item"></td><td class="qty"></td></tr>
+        </tbody></table>
+        <table class="inventory-table"><tbody>
+          <tr><td class="check"><i class="paper-check"></i></td><td class="item">Tablas de picar</td><td class="qty">4</td></tr>
+          <tr><td class="check"><i class="paper-check"></i></td><td class="item">Escoba</td><td class="qty">1</td></tr>
+          <tr><td class="check"><i class="paper-check"></i></td><td class="item">Pala</td><td class="qty">2</td></tr>
+          <tr><td class="check"><i class="paper-check"></i></td><td class="item">Estacionamientos</td><td class="qty">2</td></tr>
+          <tr><td class="check"><i class="paper-check"></i></td><td class="item"></td><td class="qty"></td></tr>
+        </tbody></table>
+      </div>
     </section>
 
     <section class="banner user state-acceptance">
-      <h2><span class="num">3</span> ESTADO INICIAL Y ACEPTACIÓN DEL USUARIO</h2>
+      <h2><span class="num">4</span> ESTADO INICIAL Y ACEPTACIÓN DEL USUARIO</h2>
       <p>El usuario declara recibir la sede y los bienes señalados en este documento, aceptar el Reglamento de Uso vigente y comprometerse a devolver la sede en el mismo estado, salvo el desgaste normal por su uso.</p>
       <div class="state-layout">
         <div class="paper-box">
@@ -166,39 +181,60 @@
           </div>
         </div>
         <div class="paper-box">
-          <b class="paper-box-title">Observaciones del estado inicial</b>
-          <span class="writing-line"></span><span class="writing-line"></span>
+          <div class="row one"><span>Fecha y hora:</span><span class="line"></span></div>
+          <div class="row one"><span>Nombre:</span><span class="line"></span></div>
+          <div class="row one"><span>RUT:</span><span class="line"></span></div>
+          <div class="row one"><span>Firma:</span><span class="line"></span></div>
         </div>
-      </div>
-      <div class="signature-grid">
-        <div class="signature-box"><div class="row one"><span>Nombre completo:</span><span class="line"></span></div><div class="row one"><span>RUT:</span><span class="line"></span></div></div>
-        <div class="signature-box"><div class="row one"><span>Firma:</span><span class="line"></span></div></div>
-        <div class="signature-box"><div class="row one"><span>Fecha y hora:</span><span class="line"></span></div></div>
       </div>
     </section>
 
-    <section class="banner jjvv reception">
-      <h2>RECEPCIÓN FINAL POR PARTE DE LA JUNTA DE VECINOS</h2>
-      <p>El representante de la Junta de Vecinos declara haber recibido la sede y los bienes señalados, dejando constancia del estado en que se entregan.</p>
-      <div class="reception-layout">
-        <div class="paper-box">
-          <span style="font-size:7.5px">Observaciones de recepción:</span>
-          <span class="writing-line"></span><span class="writing-line"></span>
-        </div>
-        <div class="paper-box outcome"><b>Estado final</b><br><i class="paper-check"></i>Conforme<br><i class="paper-check"></i>Conforme con observaciones<br><i class="paper-check"></i>No conforme</div>
+    <div class="closing-area">
+      <div class="closing-left">
+        <section class="banner jjvv reception">
+          <h2><span class="num">5</span> RECEPCIÓN FINAL POR PARTE DE LA JUNTA DE VECINOS</h2>
+          <p>El representante de la Junta de Vecinos declara haber recibido la sede y los bienes señalados, dejando constancia del estado en que se entregan.</p>
+          <div class="reception-layout">
+            <div class="paper-box outcome">
+              <b>Estado final</b>
+              <div class="outcome-checks">
+                <div><i class="paper-check"></i>Limpio y ordenado</div>
+                <div><i class="paper-check"></i>Mobiliario devuelto</div>
+                <div><i class="paper-check"></i>Sin daños visibles</div>
+              </div>
+              <b class="outcome-result">Resultado:</b>
+              <div class="outcome-result-options">
+                <div><i class="paper-check"></i>Conforme</div>
+                <div><i class="paper-check"></i>Conforme con observaciones</div>
+                <div><i class="paper-check"></i>No conforme</div>
+              </div>
+            </div>
+            <div class="paper-box final-reception-fields">
+              <div class="row one"><span>Fecha y hora:</span><span class="line"></span></div>
+              <div class="row one"><span>Encargado JJ.VV.:</span><span class="line"></span></div>
+              <div class="row one"><span>Observación:</span><span class="line"></span></div>
+              <div class="row one"><span>Firma:</span><span class="line"></span></div>
+            </div>
+          </div>
+        </section>
+        <div class="footer-box footer-brand closing-brand"><img src="../assets/logo-villa-los-robles.jpg" alt=""><b>JUNTA DE VECINOS<br>VILLA LOS ROBLES</b></div>
       </div>
-      <div class="signature-grid">
-        <div class="signature-box"><div class="row one"><span>Nombre de quien recibe (JJ.VV.):</span><span class="line"></span></div></div>
-        <div class="signature-box"><div class="row one"><span>Firma:</span><span class="line"></span></div></div>
-        <div class="signature-box"><div class="row one"><span>Fecha y hora:</span><span class="line"></span></div></div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="footer-box footer-brand"><img src="../assets/logo-villa-los-robles.jpg" alt=""><b>JUNTA DE VECINOS<br>VILLA LOS ROBLES</b></div>
-      <div class="footer-box"><b>IMPORTANTE</b><br>No se entregan llaves. La sede debe devolverse limpia, ordenada y en las mismas condiciones en que fue recibida.</div>
-      <div class="footer-box">Documento: F01 · Uso de la sede<br>Versión: 1.0<br>Vigente desde: Agosto 2026</div>
-    </footer>
+      <aside class="rules-panel">
+        <h2>REGLAS DE USO DE LA SEDE</h2>
+        <ol>
+          <li>Respete el horario: de 09:30 a 22:30 horas.</li>
+          <li>El arrendatario responde por daños, pérdidas o roturas; todo elemento deberá reponerse o pagarse.</li>
+          <li>Entregue la sede limpia y ordenada; retire la basura o deposítela en el lugar indicado por la Junta de Vecinos.</li>
+          <li>No modifique instalaciones eléctricas, de gas o de agua.</li>
+          <li>No use elementos peligrosos ni que puedan provocar incendios sin autorización, como fuegos artificiales.</li>
+          <li>Respete la normativa sobre ruidos molestos. Al finalizar, reviente los globos al interior de la sede.</li>
+          <li>El uso de juegos inflables es de exclusiva responsabilidad de quien recibe el espacio.</li>
+          <li>No use la cancha como estacionamiento; solo se permiten hasta dos automóviles en el patio de acceso.</li>
+          <li>La sede no dispone de cilindro de gas.</li>
+          <li>No se entregan llaves; la apertura y el cierre los realiza personalmente un representante de la Junta de Vecinos.</li>
+        </ol>
+      </aside>
+    </div>
   </main>
 </div>
 <script src="../js/app.js"></script>

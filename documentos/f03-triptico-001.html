@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>F03 · Tríptico informativo</title>
+<style>
+:root{--green:#07572e;--green-2:#137a40;--mint:#e8f3e8;--paper:#fff;--ink:#17251b;--muted:#536257;--line:#b8c8b9;--gold:#d9911a;--gold-soft:#fff4df}
+*{box-sizing:border-box}
+html,body{margin:0;background:#e8ece8;color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+.site-header{max-width:279.4mm;margin:0 auto;padding:10px 0;display:flex;align-items:center;gap:10px;font-size:14px;color:#3e5043}
+.site-header img{width:30px;height:30px;object-fit:contain}
+.doc-toolbar{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:8px;text-align:center}
+.doc-toolbar button{border:0;border-radius:7px;background:var(--green);color:#fff;font-weight:700;padding:8px 13px;cursor:pointer}
+.doc-toolbar button+button{margin-left:6px;background:#52695a}
+.screen-note{max-width:279.4mm;margin:8px auto 0;text-align:center;font-size:13px;color:#59675b}
+.sheet{width:279.4mm;height:215.9mm;margin:11px auto;background:var(--paper);display:grid;grid-template-columns:repeat(3,1fr);box-shadow:0 10px 25px rgba(0,0,0,.14);overflow:hidden}
+.panel{padding:9mm 8mm;border-right:.25mm dashed #9cae9e;position:relative;overflow:hidden}
+.panel:last-child{border-right:0}
+.sheet[aria-label="Cara exterior del tríptico"] .contact{order:1}.sheet[aria-label="Cara exterior del tríptico"] .kids{order:2}.sheet[aria-label="Cara exterior del tríptico"] .cover{order:3}
+.eyebrow{display:inline-block;border-radius:99px;background:var(--mint);color:var(--green);font-size:3.05mm;font-weight:700;padding:1.3mm 2.4mm;margin-bottom:3.1mm;letter-spacing:.04em}
+h1,h2,h3,p{margin-top:0}h2{font-size:5.65mm;line-height:1.04;color:var(--green);margin-bottom:3mm}h3{font-size:3.6mm;margin-bottom:1mm;color:var(--green)}
+p{font-size:3.4mm;line-height:1.37;margin:1.7mm 0}.small{font-size:2.95mm;line-height:1.34}.muted{color:var(--muted)}
+.brand{display:flex;gap:2.5mm;align-items:center;border-bottom:.3mm solid var(--line);padding-bottom:3mm;margin-bottom:4.6mm}.brand img{width:15mm;height:15mm;object-fit:contain}.brand b{display:block;color:var(--green);font-size:3.7mm;line-height:1.06}.brand span{font-size:2.85mm;color:var(--muted)}
+.cover{background:linear-gradient(150deg,#073d21,#198047);color:#fff;text-align:center;display:flex;flex-direction:column;justify-content:space-between}.cover img{width:42mm;height:42mm;object-fit:contain;border-radius:50%;background:#fff;margin:3mm auto 6mm}.cover h1{font-size:8.55mm;line-height:.97;margin:0 0 4mm}.cover p{font-size:3.95mm;line-height:1.3;color:#f2fff3}.cover .tag{display:inline-block;border:.25mm solid rgba(255,255,255,.58);border-radius:99px;padding:1.8mm 3mm;font-size:3.05mm;margin-top:4mm}.cover small{font-size:2.85mm;color:#e1f5e5}
+.callout{margin-top:4mm;border:.3mm solid #a6c4ac;background:var(--mint);border-radius:2.6mm;padding:2.7mm 3mm;font-size:3.2mm;line-height:1.32}.callout b{display:block;color:var(--green);font-size:3.4mm;margin-bottom:.7mm}.callout.gold{background:var(--gold-soft);border-color:#e8c68d}.callout.gold b{color:#9c5a00}
+.contact{background:#f8fbf8}.channel{display:grid;grid-template-columns:23mm 1fr;gap:1.8mm;padding:2.2mm 0;border-bottom:.25mm solid #dce5dc;font-size:3.2mm;align-items:center}.channel:last-child{border-bottom:0}.channel b{color:var(--green)}
+.qr-area{display:grid;grid-template-columns:25mm 1fr;gap:3mm;align-items:center;margin-top:3mm;padding:2.5mm;border:.3mm solid #a6c4ac;border-radius:2.6mm;background:#fff}.qr-area img{width:24mm;height:24mm;object-fit:contain}.qr-area b{display:block;color:var(--green);font-size:3.25mm;margin-bottom:.7mm}.qr-area span{display:block;font-size:2.9mm;line-height:1.25;color:var(--muted)}
+.quote{border-top:.3mm solid var(--line);padding-top:3mm;font-size:3mm;line-height:1.33;color:var(--muted)}
+.cards{display:grid;gap:2.5mm}.card{border:.25mm solid var(--line);border-radius:2.5mm;padding:2.6mm;background:#fff}.card b{display:block;color:var(--green);font-size:3.4mm;margin-bottom:.7mm}.card span{font-size:3mm;line-height:1.28;color:var(--muted)}
+.rule{height:1.05mm;width:31mm;background:var(--green-2);border-radius:9px;margin:1mm 0 3.3mm}.steps{display:grid;gap:2.6mm}.step{display:grid;grid-template-columns:6.5mm 1fr;gap:2mm;align-items:start}.num{width:6.5mm;height:6.5mm;border-radius:1.5mm;background:var(--mint);color:var(--green);display:grid;place-items:center;font-size:3.25mm;font-weight:700}.step b{display:block;font-size:3.35mm;color:var(--green);margin-bottom:.45mm}.step span{display:block;font-size:3mm;line-height:1.25;color:var(--muted)}
+.list{padding-left:4.5mm;margin:2mm 0}.list li{font-size:3.25mm;line-height:1.32;margin:1.7mm 0}.legal{margin-top:3.5mm;border-left:1mm solid var(--gold);padding-left:2.5mm;font-size:2.9mm;line-height:1.3;color:#475349}
+.kids{background:linear-gradient(150deg,#fffdf8,#f0f8eb)}.heart{color:#bd2d54;font-size:4.35mm}.footer-note{margin-top:4mm;text-align:center;color:var(--muted);font-size:2.7mm}
+.inclusion{display:grid;grid-template-columns:8mm 1fr;gap:2mm;align-items:start;margin-top:3mm;border:.3mm solid #9fc6b0;background:#f5fbf6;border-radius:2.6mm;padding:2.4mm}.inclusion-icon{display:grid;place-items:center;width:7mm;height:7mm;border-radius:50%;background:var(--green);color:#fff;font-size:4.2mm;font-weight:700}.inclusion b{display:block;color:var(--green);font-size:3.2mm;margin-bottom:.5mm}.inclusion span:last-child{font-size:2.85mm;line-height:1.26;color:var(--muted)}
+.with-illustration{display:flex;flex-direction:column}.panel-tail{display:flex;flex-direction:column;align-items:center;margin-top:auto;padding-top:3mm}.panel-quote{order:2;align-self:stretch;border-top:.25mm solid var(--line);padding-top:3mm;font-size:2.7mm;line-height:1.28;color:var(--muted);font-style:italic}.panel-illustration{order:1;width:46mm;height:46mm;margin-bottom:3mm;border-radius:3mm;background-image:url('../assets/f03-personajes-infantiles.png');background-size:200% 200%;border:.2mm solid #e3d9bc;background-color:#fffaf0}.panel-illustration.clown{background-position:0 0}.panel-illustration.prince{background-position:100% 0}.panel-illustration.ice{background-position:0 100%}.panel-illustration.baby{background-position:100% 100%}
+@page{size:letter landscape;margin:0}
+@media print{html,body{background:#fff}.site-header,.doc-toolbar,.screen-note{display:none!important}.sheet{margin:0;box-shadow:none;page-break-after:always}.sheet:last-of-type{page-break-after:auto}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}}
+@media screen and (max-width:900px){.sheet{transform:scale(.56);transform-origin:top left;margin-bottom:-95mm}.site-header,.screen-note{margin-left:8px}}
+</style>
+</head>
+<body>
+<header class="site-header"><img src="../assets/logo-villa-los-robles.jpg" alt="Logo Villa Los Robles"><span>Junta de Vecinos Villa Los Robles · Documento informativo F03</span></header>
+<div class="doc-toolbar"><button onclick="window.print()">Imprimir / Guardar PDF</button><button onclick="downloadFile()">Descargar HTML</button></div>
+<p class="screen-note">Tríptico en formato carta horizontal. Imprimir a doble cara por borde corto y doblar en acordeón.</p>
+
+<!-- Cara exterior: reverso, portada y solapa -->
+<section class="sheet" aria-label="Cara exterior del tríptico">
+  <article class="panel with-illustration">
+    <span class="eyebrow">RECOMENDACIONES</span>
+    <h2>Tu participación es necesaria</h2>
+    <div class="rule"></div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><div><b>Asiste</b><span>Participa en las asambleas a las que seas convocado.</span></div></div>
+      <div class="step"><div class="num">2</div><div><b>Infórmate</b><span>Lee los estatutos, la Ley N.º 19.418 y sus actualizaciones, incluida la Ley N.º 21.146.</span></div></div>
+      <div class="step"><div class="num">3</div><div><b>Usa los canales oficiales</b><span>Sigue la información difundida por la Comisión Transitoria.</span></div></div>
+      <div class="step"><div class="num">4</div><div><b>Participa activamente</b><span>Súmate a las actividades programadas para la comunidad.</span></div></div>
+    </div>
+    <div class="callout"><b>Comunidad</b>Participar es conocer vecinos, crear amistades y descubrir personas con quienes contar. Cuando las fuerzas individuales no alcanzan, recordamos que existe algo más grande: una comunidad dispuesta a acompañarnos. Este espacio está abierto a quienes quieran aportar con ideas y acciones que beneficien a la comunidad.</div>
+    <div class="panel-tail"><span class="panel-illustration baby" title="Bebé ejecutivo"></span></div>
+    <div class="footer-note"><i>“Nadie se salva solo.”</i> — José “Pepe” Mujica</div>
+  </article>
+
+  <article class="panel cover">
+    <div>
+      <img src="../assets/logo-villa-los-robles.jpg" alt="Logo Villa Los Robles">
+      <h1>Una comunidad que camina junta</h1>
+      <p>Información sobre nuestra Junta de Vecinos, la administración de la sede y la participación de Villa Los Robles.</p>
+      <span class="tag">Organización · Participación · Comunidad</span>
+    </div>
+    <small>Junta de Vecinos Villa Los Robles</small>
+  </article>
+
+  <article class="panel kids with-illustration">
+    <span class="eyebrow">DÍA DE LAS INFANCIAS</span>
+    <h2>Para niñas y niños</h2>
+    <div class="rule"></div>
+    <p>En este Día de las Infancias, quienes colaboramos en la JJ.VV. queremos regalarte sonrisas, juegos, comida rica, esparcimiento y todos los detalles que pudimos conseguir, aun sin una directiva vigente.</p>
+    <p>Esperamos de todo corazón que disfrutes todo lo que preparamos con mucho amorcito. <span class="heart">♥ ♥</span></p>
+    <div class="callout"><b>Para papás y mamás</b>Este día nos lleva al pasado. Nos recuerda que el mundo de niñas y niños es distinto al de las personas adultas y que, como cuidadores, debemos apartar tiempo cada día para entrar junto a nuestros peques a ese maravilloso mundo donde la imaginación es el límite.</div>
+    <div class="inclusion"><span class="inclusion-icon" aria-hidden="true">♿</span><div><b>Inclusión y cuidado</b><span>Si alguna niña o niño requiere apoyos o adaptaciones para participar, avísennos con anticipación. Queremos adaptar lo necesario para que todas y todos puedan disfrutar.</span></div></div>
+    <div class="panel-tail"><span class="panel-quote">“La imaginación se celebra mejor cuando nadie queda fuera.”</span><span class="panel-illustration ice" title="Princesa de hielo"></span></div>
+  </article>
+</section>
+
+<!-- Cara interior -->
+<section class="sheet" aria-label="Cara interior del tríptico">
+  <article class="panel contact with-illustration">
+    <div class="brand"><img src="../assets/logo-villa-los-robles.jpg" alt=""><div><b>Villa Los Robles</b><span>Junta de Vecinos</span></div></div>
+    <span class="eyebrow">MANTENTE INFORMADO</span>
+    <h2>Canales de comunicación</h2>
+    <p>Infórmate y participa mediante los canales establecidos por la Comisión Transitoria.</p>
+    <div class="channel"><b>Instagram</b><span>@losrobles1.jjvv</span></div>
+    <div class="channel"><b>Facebook</b><span>LosRobles1Maipu</span></div>
+    <div class="channel"><b>WhatsApp</b><span>Grupo oficial de la comunidad</span></div>
+    <div class="channel"><b>Celular</b><span>+56 9 5389 2573</span></div>
+    <div class="qr-area"><img src="../assets/qr-whatsapp-los-robles.png" alt="Código QR del grupo oficial de WhatsApp"><div><b>Únete al grupo oficial</b><span>Escanea el código QR para ingresar al grupo de WhatsApp de la comunidad.</span></div></div>
+    <div class="panel-tail"><span class="panel-quote">“La información compartida fortalece la comunidad.”</span><span class="panel-illustration clown" title="Payaso jugando"></span></div>
+  </article>
+
+  <article class="panel with-illustration">
+    <span class="eyebrow">ADMINISTRATIVO DE SEDE</span>
+    <h2>La sede sigue al servicio de la comunidad</h2>
+    <div class="rule"></div>
+    <p>Se eligió una Comisión Transitoria para administrar la sede mientras se desarrolla el proceso eleccionario.</p>
+    <div class="cards">
+      <div class="card"><b>Continuidad</b><span>La sede mantiene su función comunitaria durante esta etapa.</span></div>
+      <div class="card"><b>Orden y respaldo</b><span>Las solicitudes, usos y aportes se registran mediante los documentos establecidos. Tras años sin rendición de fondos de una administración anterior, la administración de paso ya ha realizado una rendición en solo meses de función.</span></div>
+      <div class="card"><b>Cuidado compartido</b><span>Su buen estado depende del compromiso de cada persona que la utiliza.</span></div>
+    </div>
+    <div class="callout gold"><b>Una sede para todos</b>La administración transitoria busca resguardar este espacio común hasta que la nueva directiva sea elegida.</div>
+    <div class="callout"><b>Tiempo de juego sin cobro</b>Ahora contamos con tiempo de juego gratuito para niñas y niños pequeños.</div>
+    <div class="panel-tail"><span class="panel-quote">“Cuidar lo común es cuidar a quienes vienen después.”</span></div>
+  </article>
+
+  <article class="panel with-illustration">
+    <span class="eyebrow">ADMINISTRATIVO JJ.VV.</span>
+    <h2>Proceso de normalización</h2>
+    <div class="rule"></div>
+    <p>Se realizó una moción de censura y, desde entonces, se ha concurrido de manera constante a la Municipalidad. Actualmente contamos con la asesoría del área de Organizaciones Comunitarias.</p>
+    <p>Estamos a la espera de la autorización municipal para convocar a una asamblea destinada a elegir la Comisión Electoral.</p>
+    <div class="callout"><b>¿Qué sigue?</b>Con el pase municipal, se informará oportunamente la convocatoria y las etapas del proceso eleccionario.</div>
+    <div class="legal"><b>Infórmate:</b> revisa la Ley N.º 19.418, sobre Juntas de Vecinos y demás Organizaciones Comunitarias, y la Ley N.º 21.146, que actualiza aspectos del procedimiento electoral.</div>
+    <div class="panel-tail"><span class="panel-quote">“Ordenar el presente también abre camino al futuro.”</span><span class="panel-illustration prince" title="Pequeño príncipe"></span></div>
+  </article>
+</section>
+
+<script>
+function downloadFile(){const a=document.createElement('a');a.href=location.href;a.download='f03-triptico-001.html';a.click()}
+</script>
+</body>
+</html>

@@ -14,6 +14,10 @@
 
 En F01, presione **Editar textos**, haga sus cambios y luego use **Descargar HTML modificado**.
 
+## Uso de F04
+
+F04 registra la entrega y devolución de bienes comunitarios, incluida la garantía y la recepción final. Está preparado para una hoja tamaño Carta a escala 100 %. Puede completarse a mano o activar **Editar campos** antes de imprimir; desactive los encabezados y pies de página del navegador.
+
 
 ## Rama `prueba`
 

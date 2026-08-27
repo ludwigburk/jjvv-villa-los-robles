@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>F04 · Préstamo temporal de bienes</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    :root{--f04-green:#0b4f2a;--f04-green-dark:#073b20;--f04-pale:#eef6ed;--f04-line:#6e8272;--f04-ink:#172019}
+    @page{size:letter portrait;margin:0}
+    .f04-note{max-width:215.9mm;margin:0 auto 10px;text-align:center;color:#566159;font-size:13px}
+    .f04-page{width:215.9mm;height:279.4mm;min-height:279.4mm;margin:0 auto 24px;padding:4mm 6.5mm 3.5mm;overflow:hidden;color:var(--f04-ink);background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.14)}
+    .f04-header{height:29mm;display:grid;grid-template-columns:31mm minmax(0,1fr) 48mm;gap:3mm;align-items:center}
+    .f04-logo{width:28mm;height:28mm;display:block;object-fit:contain;margin:auto}
+    .f04-heading{text-align:center;color:var(--f04-green)}
+    .f04-heading h1{margin:0;font-size:18px;line-height:1.05;font-weight:800;letter-spacing:.1px}
+    .f04-heading-rule{height:1px;margin:4px 0 6px;background:var(--f04-green)}
+    .f04-heading h2,.f04-heading h3{margin:0;font-size:13.5px;line-height:1.12;font-weight:800}
+    .f04-heading p{margin:4px 0 0;font:italic 11px/1.05 Georgia,serif;color:#245f37}
+    .f04-meta{border:1.2px solid var(--f04-green);border-radius:6px;overflow:hidden;font-size:10px}
+    .f04-meta-row{min-height:8.8mm;display:flex;align-items:center;gap:4px;padding:1.5mm 2mm;border-bottom:1px solid #9aad9d;white-space:nowrap}
+    .f04-meta-row:last-child{border-bottom:0}.f04-meta-row b{font-weight:800}
+    .f04-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--f04-green);flex:0 0 auto}
+    .f04-section{margin-top:2.3mm;border:1.1px solid var(--f04-green);border-radius:6px;overflow:hidden}
+    .f04-section-title{height:8mm;display:flex;align-items:center;gap:3mm;margin:0;padding-right:3mm;border-bottom:1px solid #9aad9d;color:var(--f04-green-dark);background:linear-gradient(90deg,#e5f0e2,#f7faf6);font-size:12px;font-weight:800}
+    .f04-num{width:7.5mm;height:6.5mm;margin-left:2.5mm;display:grid;place-items:center;border-radius:3px;color:#fff;background:linear-gradient(#176537,var(--f04-green-dark));font-size:12px}
+    .f04-content{padding:1.8mm 3.5mm 1.9mm;font-size:10.8px}
+    .f04-row{display:grid;grid-template-columns:auto 1fr;gap:2mm;align-items:end;min-height:5.6mm}
+    .f04-row.two{grid-template-columns:auto minmax(0,1.55fr) auto minmax(0,.85fr)}
+    .f04-row.phone{grid-template-columns:auto 42%}.f04-label{white-space:nowrap}
+    .f04-line{display:block;min-width:0;min-height:4.2mm;border-bottom:1px solid #3e4b41;padding:0 .7mm .4mm;outline:none}
+    .f04-money{display:grid;grid-template-columns:auto 38mm auto 1fr;gap:2mm;align-items:end;min-height:5.6mm}
+    .f04-goods{width:100%;margin:0;border-collapse:collapse;table-layout:fixed}
+    .f04-goods th{height:6mm;padding:1mm;border:1px solid #718575;color:#fff;background:var(--f04-green);font-size:10px}
+    .f04-goods td{height:9mm;padding:1mm 2mm;border:1px solid #718575;vertical-align:bottom;font-size:10.4px}
+    .f04-goods .qty{width:18%}.f04-goods .description{width:55%}.f04-goods .total{width:27%}
+    .f04-cell-line{display:block;min-height:3.5mm;border-bottom:1px solid #3e4b41;outline:none}
+    .f04-total-cell{display:grid;grid-template-columns:auto 1fr;gap:2mm;align-items:end}
+    .f04-reference-total{display:grid;grid-template-columns:auto 1fr;gap:2mm;align-items:end;min-height:5.8mm;margin-top:1.2mm}
+    .f04-terms{margin:0;font-size:10px;line-height:1.3}
+    .f04-notice{margin-top:1.5mm;padding:1.7mm 3mm;display:grid;grid-template-columns:8mm 1fr;gap:2mm;align-items:center;border:1px solid #b4c4b6;border-radius:5px;color:#174d29;background:linear-gradient(90deg,#edf4e9,#f6f9f4);font-size:9.8px;line-height:1.2;font-weight:700}
+    .f04-shield{position:relative;width:7mm;height:7.5mm;margin:auto;background:var(--f04-green);clip-path:polygon(50% 0,92% 14%,86% 68%,50% 100%,14% 68%,8% 14%)}
+    .f04-shield::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:13px;font-weight:800}
+    .f04-final{border-radius:6px 6px 0 0;margin-bottom:0}
+    .f04-checks{display:grid;grid-template-columns:1fr 1.35fr 1fr;gap:3mm;align-items:center;min-height:5mm}
+    .f04-check{display:flex;gap:1.5mm;align-items:center;white-space:nowrap}
+    .f04-box{width:3.5mm;height:3.5mm;border:1px solid #344238;display:inline-block;flex:0 0 auto;background:#fff}
+    .f04-observations{display:grid;grid-template-columns:auto 1fr;gap:2mm;align-items:end;min-height:5.5mm}
+    .f04-settlement{display:grid;grid-template-columns:auto 30mm auto 30mm;gap:2mm;align-items:end;min-height:5.5mm}
+    .f04-signatures{display:grid;grid-template-columns:1fr 1fr;border:1.1px solid var(--f04-green);border-top:0;border-radius:0 0 6px 6px;overflow:hidden}
+    .f04-signature{height:30mm;padding:2mm 9mm 1.5mm}.f04-signature+.f04-signature{border-left:1px solid #8da191}
+    .f04-signature h4{margin:0 0 1.2mm;text-align:center;color:var(--f04-green);font-size:10.2px}
+    .f04-signature-row{display:grid;grid-template-columns:15mm 1fr;gap:2mm;align-items:end;min-height:6.6mm;font-size:10.2px}
+    .f04-footer{height:6.3mm;margin-top:1.5mm;display:grid;place-items:center;border:1px solid var(--f04-green);border-radius:5px;color:#214b2e;font:italic 9.3px Georgia,serif}
+    [data-editable][contenteditable="true"]{cursor:text}[data-editable][contenteditable="true"]:focus{background:#fff7c8;outline:none}
+    @media print{
+      html,body{width:215.9mm!important;height:279.4mm!important;margin:0!important;padding:0!important;background:#fff!important}
+      .site-header,.doc-toolbar,.f04-note{display:none!important}.page-shell{max-width:none!important;margin:0!important;padding:0!important}
+      .f04-page{width:215.9mm!important;height:279.4mm!important;min-height:279.4mm!important;margin:0!important;padding:4mm 6.5mm 3.5mm!important;box-shadow:none!important;overflow:hidden!important}
+      *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+    }
+    @media screen and (max-width:900px){.f04-page{transform:scale(.72);transform-origin:top left;margin-bottom:-75mm}}
+    @media screen and (max-width:650px){.f04-page{transform:scale(.47);margin-bottom:-147mm}.f04-note{padding:0 12px}}
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="../index.html"><img src="../assets/logo-villa-los-robles.jpg" alt="Logo Villa Los Robles"><span>Villa Los Robles<small>Portal documental</small></span></a>
+    <nav aria-label="Documentos"><a href="../index.html">Inicio</a><a href="f01-uso-sede.html">F01 · Uso de sede</a><a href="f02-recibo.html">F02 · Recibo</a><a href="f04-prestamo-bienes.html" aria-current="page">F04 · Préstamo de bienes</a><a href="d01-reglamento.html">D01 · Reglamento</a></nav>
+  </div>
+</header>
+
+<div class="page-shell">
+  <div class="doc-toolbar"><button class="btn" id="print-doc" type="button">Imprimir / Guardar PDF</button><button class="btn" id="toggle-edit" type="button">Editar campos</button><button class="btn" id="clear-f04" type="button">Limpiar campos</button></div>
+  <p class="f04-note">Papel Carta · escala 100 % · desactive “Encabezados y pies de página”.</p>
+
+  <main class="f04-page" aria-label="Formulario F04 de préstamo temporal de bienes">
+    <header class="f04-header">
+      <img class="f04-logo" src="../assets/logo-villa-los-robles.jpg" alt="Logo oficial de Villa Los Robles">
+      <div class="f04-heading"><h1>JUNTA DE VECINOS VILLA LOS ROBLES</h1><div class="f04-heading-rule"></div><h2>ACTA DE ENTREGA Y DEVOLUCIÓN DE BIENES</h2><h3>PRÉSTAMO TEMPORAL + GARANTÍA</h3><p>Juntos cuidamos los bienes de nuestra comunidad</p></div>
+      <div class="f04-meta" aria-label="Control del acta"><div class="f04-meta-row"><b>F04 · ACTA N.º</b><span data-editable>2026-___</span></div><div class="f04-meta-row"><b>FECHA</b><span data-editable>___ / ___ / 2026</span></div><div class="f04-meta-row"><b>ESTADO</b><span class="f04-dot" aria-hidden="true"></span><b data-editable>ENTREGADO</b></div></div>
+    </header>
+
+    <section class="f04-section">
+      <h2 class="f04-section-title"><span class="f04-num">1</span>DATOS DE QUIEN RECIBE</h2>
+      <div class="f04-content"><div class="f04-row two"><span class="f04-label">Nombre completo:</span><span class="f04-line" data-editable></span><span class="f04-label">RUT:</span><span class="f04-line" data-editable></span></div><div class="f04-row phone"><span class="f04-label">Teléfono:</span><span class="f04-line" data-editable></span></div><div class="f04-row"><span class="f04-label">Dirección:</span><span class="f04-line" data-editable></span></div><div class="f04-row"><span class="f04-label">Correo electrónico:</span><span class="f04-line" data-editable></span></div></div>
+    </section>
+
+    <section class="f04-section">
+      <h2 class="f04-section-title"><span class="f04-num">2</span>OBJETO, PLAZO Y GARANTÍA</h2>
+      <div class="f04-content"><div class="f04-row"><span class="f04-label">Destino de los bienes:</span><span class="f04-line" data-editable></span></div><div class="f04-row"><span class="f04-label">Fecha y hora de entrega:</span><span class="f04-line" data-editable></span></div><div class="f04-row"><span class="f04-label">Fecha y hora de devolución:</span><span class="f04-line" data-editable></span></div><div class="f04-row"><span class="f04-label">Tipo de garantía:</span><span class="f04-line" data-editable></span></div><div class="f04-money"><span>Monto recibido: $</span><span class="f04-line" data-editable></span><span>Comprobante:</span><span class="f04-line" data-editable></span></div></div>
+    </section>
+
+    <section class="f04-section">
+      <h2 class="f04-section-title"><span class="f04-num">3</span>BIENES ENTREGADOS</h2>
+      <div class="f04-content">
+        <table class="f04-goods"><thead><tr><th class="qty" scope="col">CANTIDAD</th><th class="description" scope="col">DESCRIPCIÓN</th><th class="total" scope="col">TOTAL</th></tr></thead><tbody>
+          <tr><td><span class="f04-cell-line" data-editable></span></td><td><span class="f04-cell-line" data-editable></span></td><td><span class="f04-total-cell"><span>$</span><span class="f04-cell-line" data-editable></span></span></td></tr>
+          <tr><td><span class="f04-cell-line" data-editable></span></td><td><span class="f04-cell-line" data-editable></span></td><td><span class="f04-total-cell"><span>$</span><span class="f04-cell-line" data-editable></span></span></td></tr>
+          <tr><td><span class="f04-cell-line" data-editable></span></td><td><span class="f04-cell-line" data-editable></span></td><td><span class="f04-total-cell"><span>$</span><span class="f04-cell-line" data-editable></span></span></td></tr>
+        </tbody></table>
+        <div class="f04-reference-total"><span>Valor total referencial: $</span><span class="f04-line" data-editable></span></div>
+      </div>
+    </section>
+
+    <section class="f04-section">
+      <h2 class="f04-section-title"><span class="f04-num">4</span>CONDICIONES Y RESPONSABILIDAD</h2>
+      <div class="f04-content"><p class="f04-terms">Quien recibe declara que los bienes se encuentran en el estado indicado y se obliga a cuidarlos, utilizarlos únicamente para el fin informado y devolverlos completos, limpios y en la fecha acordada. Responderá por pérdidas, daños o roturas que excedan el desgaste normal, mediante reparación, reposición o pago del costo acreditado.</p><div class="f04-notice"><span class="f04-shield" aria-hidden="true"></span><span>La garantía será devuelta después de revisar los bienes. Toda retención deberá quedar respaldada por esta acta y los antecedentes correspondientes.</span></div></div>
+    </section>
+
+    <section class="f04-section f04-final">
+      <h2 class="f04-section-title"><span class="f04-num">5</span>RECEPCIÓN FINAL</h2>
+      <div class="f04-content"><div class="f04-checks"><span class="f04-check"><span class="f04-box"></span>Conforme</span><span class="f04-check"><span class="f04-box"></span>Conforme con observaciones</span><span class="f04-check"><span class="f04-box"></span>No conforme</span></div><div class="f04-observations"><span>Observaciones:</span><span class="f04-line" data-editable></span></div><div class="f04-settlement"><span>Garantía devuelta: $</span><span class="f04-line" data-editable></span><span>Retenida: $</span><span class="f04-line" data-editable></span></div></div>
+    </section>
+
+    <div class="f04-signatures">
+      <section class="f04-signature" aria-label="Firma de quien recibe"><h4>QUIEN RECIBE</h4><div class="f04-signature-row"><span>Firma:</span><span class="f04-line"></span></div><div class="f04-signature-row"><span>Nombre:</span><span class="f04-line" data-editable></span></div><div class="f04-signature-row"><span>RUT:</span><span class="f04-line" data-editable></span></div></section>
+      <section class="f04-signature" aria-label="Firma de la Junta de Vecinos"><h4>POR LA JUNTA DE VECINOS</h4><div class="f04-signature-row"><span>Firma:</span><span class="f04-line"></span></div><div class="f04-signature-row"><span>Nombre:</span><span class="f04-line" data-editable></span></div><div class="f04-signature-row"><span>Cargo:</span><span class="f04-line" data-editable></span></div></section>
+    </div>
+    <div class="f04-footer">Emitir en dos copias firmadas: una para la JJ.VV. y otra para quien recibe.</div>
+  </main>
+</div>
+
+<script src="../js/app.js"></script>
+<script>
+  const clearF04Button=document.getElementById('clear-f04');
+  if(clearF04Button){clearF04Button.addEventListener('click',()=>{document.querySelectorAll('.f04-line[data-editable],.f04-cell-line[data-editable]').forEach(el=>el.textContent='');});}
+</script>
+</body>
+</html>
